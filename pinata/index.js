@@ -13,6 +13,9 @@ const pinata = pinataSDK(process.env.PINATA_API_KEY, process.env.PINATA_API_SECR
 
 const ASSETS_LOCATION = './assets/';
 
+const RESULTS_FILENAME = 'metadata_results.txt';
+const RESULTS_FILENAME_LOCALION = './' + RESULTS_FILENAME;
+
 const options = {
   pinataMetadata: {
     name: 'Tesla NFT Collection',
@@ -28,6 +31,8 @@ const options = {
 
 
 const getMetadata = async (_assetLocation, _options) => {
+  await createResultsFile(RESULTS_FILENAME);
+
   const assets = await getAssets(_assetLocation);
   console.log(`assets: ${assets}`);
 
@@ -38,6 +43,22 @@ const getMetadata = async (_assetLocation, _options) => {
     const asset = assets[i];
     const path = ASSETS_LOCATION + asset;
     await pinFile(path, _options);
+  }
+}
+
+const createResultsFile = async (_filename) => {
+  try {
+    return fsPromises.writeFile(_filename, '');
+  } catch (err) {
+    throw('createResultsFile error:', err);
+  }
+}
+
+const appendFile = async (_path, _data) => {
+  try {
+    return fsPromises.appendFile(_path, _data, 'utf8');
+  } catch (err) {
+    throw('createResultsFile error:', err);
   }
 }
 
@@ -61,6 +82,7 @@ const pinFile = async (_path, _options) => {
 
   const metadata = await pinJSONToIPFS(body, _options);
   console.log(`metadata; ${metadata}\n`);
+  await appendFile(RESULTS_FILENAME_LOCALION, metadata + '\n');
 }
 
 const pineFileToIPFS = async (_path, _options) => {
