@@ -84,9 +84,6 @@ const pinJSONToIPFS = async (_body) => {
 
 getMetadata(ASSETS_LOCATION, options);
 
-//  tesla_0 - https://gateway.pinata.cloud/ipfs/QmSErsoctVS6c7T5NxcydrSxKEb9cFHjxXcvQePSU937mV
-
-
 
 /**
  *
