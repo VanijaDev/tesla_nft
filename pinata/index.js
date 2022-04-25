@@ -1,8 +1,14 @@
 /**
- * 1. deploys assets to IPFS.
- * 2. creates JSON for each asset
+ * Description
+ *  1. deploys assets to IPFS.
+ *  2. creates JSON for each asset
  * 
- * run: npm index.js
+ * Setup:
+ *  update correct location of assets folder - ASSETS_LOCATION
+ *  put assets into ASSETS_LOCATION
+ * 
+ * Run:
+ *  npm index.js
  */
 
 const pinataSDK = require('@pinata/sdk');
