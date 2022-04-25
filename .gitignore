@@ -1,2 +1,7 @@
 pinata/node_modules
 pinata/.env
+
+smart_contracts/node_modules
+smart_contracts/.env
+smart_contracts/build
+smart_contracts/contracts/artifacts
