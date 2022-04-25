@@ -4,8 +4,11 @@
  *  2. creates JSON for each asset
  * 
  * Setup:
+ *  npm i 
  *  update correct location of assets folder - ASSETS_LOCATION
  *  put assets into ASSETS_LOCATION
+ *  update metadata body - options
+ *  update metadata of JSON body - pinFile -> body
  * 
  * Run:
  *  npm index.js
