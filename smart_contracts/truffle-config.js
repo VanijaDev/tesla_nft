@@ -24,6 +24,7 @@
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 require("dotenv").config();
+require("truffle-plugin-verify");
 
 
 module.exports = {
@@ -77,8 +78,18 @@ module.exports = {
     ropsten: {
       network_id: 3,
       provider: new HDWalletProvider(process.env.DEPLOYER_PK, process.env.MORALIS_ROPSTEN_API)
+    },
+
+    rinkeby: {
+      network_id: 4,
+      provider: new HDWalletProvider(process.env.DEPLOYER_PK, process.env.MORALIS_RINKEBY_API)
     }
   },
+
+  api_keys: {
+    etherscan: process.env.ETHERSCAN_API
+  },
+  plugins: ['truffle-plugin-verify'],
 
   // Set default mocha options here, use special reporters etc.
   mocha: {

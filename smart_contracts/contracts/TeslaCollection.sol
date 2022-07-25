@@ -6,6 +6,9 @@ import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721UR
 import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract TeslaCollection is Ownable, ERC721URIStorage, ERC721Enumerable {
+
+  event Mint(uint256 _id, address _to, string _uri);
+
   constructor() ERC721("Tesla NFT Collection", "TNC") {}
 
   /**
@@ -39,6 +42,8 @@ contract TeslaCollection is Ownable, ERC721URIStorage, ERC721Enumerable {
       
       _mint(msg.sender, id);
       _setTokenURI(id, _uris[i]);
+
+      emit Mint(id, msg.sender, _uris[i]);
     }
   }
 }
